@@ -1,5 +1,5 @@
 import React from 'react'
-import {useParams} from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 
 const CountryDetail = (props) => {
@@ -20,7 +20,13 @@ const CountryDetail = (props) => {
         <p>Area : {detailCountry[0].area} km <sup>2</sup></p>
         <p>Borders</p>
         <ul>
-            {detailCountry[0].borders.map}
+            {detailCountry[0].borders.map((border) => {
+                return <li>
+                    <Link to={"/"+border}>
+                    {countries.find((country) => country.alpha3Code === border).name.common}
+                    </Link>
+                </li>
+            })}
         </ul>
     </div>
   )
